@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>daesonamu</title>
+    <link rel="stylesheet" href="../css/dgsw.css" />
+    <link rel="icon" type="image/png" href="../img/dasonamu.png" />
+  </head>
+  <body>
+    <div class="all">
+      <header class="header">
+        <div class="header-content">
+          <a href="#" class="logo">
+            <i class="fas fa-tree"></i>
+            daesonamu
+          </a>
+
+          <div class="search-container">
+            <input
+              type="text"
+              class="search-box"
+              placeholder="검색어를 입력하세요..."
+            />
+            <i class="fas fa-search"></i>
+          </div>
+
+          <div class="auth-section">
+            <button class="auth-btn login-btn" onclick="showLogin()">
+              로그인
+            </button>
+            <button class="auth-btn signup-btn" onclick="showSignup()">
+              회원가입
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Container -->
+      <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+          <h3>
+            <i class="fas fa-folder"></i>
+            카테고리
+          </h3>
+          <ul class="category-list">
+            <li>
+              <a href="#" class="active"
+                ><i class="fas fa-comments"></i> 자유게시판</a
+              >
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-question-circle"></i> 질문게시판</a>
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-share-alt"></i> 정보공유</a>
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-bullhorn"></i> 건의사항</a>
+            </li>
+          </ul>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+          <!-- Hot Posts Section -->
+          <section class="hot-posts">
+            <h2 class="section-title">
+              <i class="fas fa-fire"></i>
+              인기글
+            </h2>
+            <div class="hot-posts-grid">
+              <div class="post-card">
+                <h4>대소마고 축제 준비위원회 모집!</h4>
+                <p>
+                  곧 다가올 축제를 위한 준비위원회를 모집합니다. 함께 멋진
+                  축제를 만들어요!
+                </p>
+                <div class="post-meta">
+                  <span>작성자: 학생회장</span>
+                  <span>👍 24 </span>
+                </div>
+              </div>
+              <div class="post-card">
+                <h4>개발 스터디 멤버 모집</h4>
+                <p>
+                  React와 Node.js를 함께 공부할 스터디 멤버를 모집합니다.
+                  초보자도 환영!
+                </p>
+                <div class="post-meta">
+                  <span>작성자: 개발러</span>
+                  <span>👍 18 </span>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <div class="real">
+          <section class="recent-posts">
+            <h2 class="section-title">
+              <i class="fas fa-clock"></i>
+              최신글
+            </h2>
+            <ul class="post-list">
+              <li class="post-item">
+                <div class="post-icon">
+                  <i class="fas fa-comments"></i>
+                </div>
+                <div class="post-content">
+                  <div class="post-title">내일 시험 화이팅!</div>
+                  <div class="post-info">
+                    자유게시판 • 방금 전 • 작성자: 홍길동
+                  </div>
+                </div>
+                <div class="post-stats">
+                  <span>👍 5</span>
+                </div>
+              </li>
+              <li class="post-item">
+                <div class="post-icon">
+                  <i class="fas fa-question-circle"></i>
+                </div>
+                <div class="post-content">
+                  <div class="post-title">Java 문법 질문있어요</div>
+                  <div class="post-info">
+                    질문게시판 • 5분 전 • 작성자: 코딩초보
+                  </div>
+                </div>
+                <div class="post-stats">
+                  <span>👍 2</span>
+                </div>
+              </li>
+              <li class="post-item">
+                <div class="post-icon">
+                  <i class="fas fa-share-alt"></i>
+                </div>
+                <div class="post-content">
+                  <div class="post-title">유용한 개발 도구 모음</div>
+                  <div class="post-info">
+                    정보공유 • 1시간 전 • 작성자: 정보왕
+                  </div>
+                </div>
+                <div class="post-stats">
+                  <span>👍 15</span>
+                </div>
+              </li>
+              <li class="post-item">
+                <div class="post-icon">
+                  <i class="fas fa-bullhorn"></i>
+                </div>
+                <div class="post-content">
+                  <div class="post-title">급식 메뉴 개선 건의</div>
+                  <div class="post-info">
+                    건의사항 • 2시간 전 • 작성자: 급식사랑
+                  </div>
+                </div>
+                <div class="post-stats">
+                  <span>👍 8</span>
+                </div>
+              </li>
+              <li class="post-item">
+                <div class="post-icon">
+                  <i class="fas fa-comments"></i>
+                </div>
+                <div class="post-content">
+                  <div class="post-title">주말 스터디 카페 추천</div>
+                  <div class="post-info">
+                    자유게시판 • 3시간 전 • 작성자: 공부벌레
+                  </div>
+                </div>
+                <div class="post-stats">
+                  <span>👍 6</span>
+                </div>
+              </li>
+            </ul>
+          </section>
+
+          <!-- Pagination -->
+          <div class="pagination">
+            <a href="#">⬅ 이전</a>
+            <a href="#" class="active">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">다음 ➡</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="footer-links">
+          <a href="#">이용약관</a>
+          <a href="#">개인정보처리방침</a>
+          <a href="#">공지사항</a>
+          <a href="#">문의하기</a>
+        </div>
+        <p>© 2025 대소나무 | Made by Han</p>
+        <p style="font-size: 0.8rem; color: #999">
+          대구소프트웨어마이스터고등학교 커뮤니티
+        </p>
+      </footer>
+    </div>
+
+    <!-- 로그인 모달 -->
+    <div id="loginModal" class="modal-overlay">
+      <div class="modal">
+        <div class="modal-header">
+          <h2 class="modal-title">로그인</h2>
+          <button class="close-btn" onclick="closeModal()">&times;</button>
+        </div>
+        <form>
+          <div class="form-group">
+            <label for="loginId">아이디</label>
+            <input type="text" id="loginId" name="loginId" required />
+          </div>
+          <div class="form-group">
+            <label for="loginPassword">비밀번호</label>
+            <input
+              type="password"
+              id="loginPassword"
+              name="loginPassword"
+              required
+            />
+          </div>
+          <button type="submit" class="submit-btn">로그인</button>
+        </form>
+        <div class="switch-form">
+          <a href="#" onclick="switchToSignup()">회원가입</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 회원가입 모달 -->
+    <div id="signupModal" class="modal-overlay">
+      <div class="modal2">
+        <div class="modal-header">
+          <h2 class="modal-title">회원가입</h2>
+          <button class="close-btn1" onclick="closeModal()">&times;</button>
+        </div>
+        <form>
+          <div class="form-group">
+            <label for="signupId">아이디</label>
+            <input type="text" id="signupId" name="signupId" required />
+          </div>
+          <div class="form-group">
+            <label for="signupEmail">이메일</label>
+            <input type="email" id="signupEmail" name="signupEmail" required />
+          </div>
+          <div class="form-group">
+            <label for="signupPassword">비밀번호</label>
+            <input
+              type="password"
+              id="signupPassword"
+              name="signupPassword"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="signupPasswordConfirm">비밀번호 확인</label>
+            <input
+              type="password"
+              id="signupPasswordConfirm"
+              name="signupPasswordConfirm"
+              required
+            />
+          </div>
+          <button type="submit" class="submit-btn1">회원가입</button>
+        </form>
+        <div class="switch-form">
+          <a href="#" onclick="switchToLogin()">로그인</a>
+        </div>
+      </div>
+    </div>
+    <script src="../js/dgsw.js"></script>
+  </body>
+</html>

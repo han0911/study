@@ -1,0 +1,343 @@
+@import url("https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #00511e 0%, #006b2d 100%);
+  min-height: 100vh;
+  color: #000; /* 검정색으로 변경 */
+  /* display: flex;  제거 - 모달이 자체적으로 중앙 정렬 처리 */
+  /* justify-content: center; 제거 */
+  /* align-items: center; 제거 */
+}
+
+/* 로그인/회원가입 폼을 감싸는 모달 창의 기본 스타일 */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* 반투명 검은색 배경 */
+  backdrop-filter: blur(8px);
+  display: none; /* JS로 제어: 초기에는 숨김 */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 모달 내부의 폼 컨테이너 스타일 */
+.modal-form {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 25px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 350px;
+  animation: modalSlideIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden; /* 내부 콘텐츠가 넘치면 숨김 */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.modal-form::before { /* 로그인 폼의 쉬머 효과를 모달 폼으로 이동 */
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(0, 81, 30, 0.03) 50%,
+    transparent 70%
+  );
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes modalSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes shimmer { /* modal-form::before 에서 사용 */
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #999;
+  transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #00511e;
+  transform: rotate(90deg) scale(1.1);
+}
+
+.form-title {
+  text-align: center;
+  color: #1f2937;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+  position: relative;
+  z-index: 2;
+  animation: titleGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+  from {
+    text-shadow: 0 0 5px rgba(0, 81, 30, 0.1);
+  }
+  to {
+    text-shadow: 0 0 15px rgba(0, 81, 30, 0.3);
+  }
+}
+
+.form-title::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, #00511e, #007a2e);
+  border-radius: 2px;
+  animation: lineExpand 1s ease-out 0.5s both;
+}
+
+@keyframes lineExpand {
+  from {
+    width: 0;
+  }
+  to {
+    width: 40px;
+  }
+}
+
+.form-group {
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  color: #374151;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-wrapper i {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 12px 12px 35px;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(249, 250, 251, 0.8);
+  color: #374151;
+  position: relative;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #00511e;
+  background: rgba(255, 255, 255, 0.95);
+  transform: translateY(-1px);
+}
+
+.form-group input:focus + .input-wrapper i {
+  color: #00511e;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.form-group input:focus ~ label {
+  color: #00511e;
+}
+
+.form-group input::placeholder {
+  color: #9ca3af;
+  font-size: 0.85rem;
+}
+
+.button-group {
+  display: flex;
+  gap: 12px;
+  margin-top: 25px;
+  position: relative;
+  z-index: 2;
+}
+
+.btn {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background-color: #00511e;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+}
+
+.btn-secondary { /* 회원가입 취소 버튼용 */
+    background-color: #e5e7eb;
+    color: #374151;
+}
+
+.btn-secondary:hover {
+    background-color: #d1d5db;
+    transform: translateY(-2px);
+}
+
+
+.signup-link {
+  text-align: center;
+  margin-top: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.signup-link a {
+  color: #00511e;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.signup-link a::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #00511e, #007a2e);
+  transition: width 0.3s ease;
+}
+
+.signup-link a:hover::after {
+  width: 100%;
+}
+
+.signup-link a:hover {
+  color: #007a2e;
+  transform: translateY(-1px);
+}
+
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .modal-form { /* login-form 대신 modal-form으로 변경 */
+    padding: 18px;
+    margin: 15px;
+  }
+
+  .form-title {
+    font-size: 1.3rem;
+  }
+
+  .button-group {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* 접근성 개선 */
+.btn:focus {
+  outline: 2px solid #00511e;
+  outline-offset: 2px;
+}
+
+/* 로딩 상태 */
+.btn-primary.loading {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.btn-primary.loading::after {
+  content: "";
+  width: 14px;
+  height: 14px;
+  border: 2px solid transparent;
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+  margin-left: 8px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
